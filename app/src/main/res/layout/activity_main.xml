@@ -562,8 +562,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="Test"
-        android:text="Button" />
+        android:text="Check" />
 
+    <TextView
+        android:id="@+id/debugCurrentWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="debugCurrentWord" />
 
 </GridLayout>
 

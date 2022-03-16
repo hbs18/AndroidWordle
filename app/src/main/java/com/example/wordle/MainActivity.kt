@@ -22,7 +22,7 @@ lateinit var list4: List<TextInputLayout>
 lateinit var list5: List<TextInputLayout>
 lateinit var list6: List<TextInputLayout>
 
-var currentWord = "kurac"
+var wotd = "kurac"
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -165,11 +165,41 @@ class MainActivity : AppCompatActivity() {
     //provjeri jel list[index] trenutno zadnji element u listi i onda se dodjeli fokus samom sebi
 
     fun Test(view: View){
+        var rows = listOf(list1, list2, list3, list4, list5, list6)
+
+        var currentList = rows[currentRow-1]
+        var currentWord = ""
+        var index = 0
+
+        for (element in currentList){
+            currentWord = currentWord + element.editText?.text
+        }
+
+        for (element in currentList){       //color the correct letters at wrong positions yellow
+            if (wotd.contains(element.editText?.text.toString())){
+                element.setBackgroundColor(Color.parseColor("#33FFFF00"))
+            }
+        }
+
+        for (element in currentList){       // color the correct letters at correct positions green
+            if (wotd[index].toString() == element.editText?.text.toString()){
+                element.setBackgroundColor(Color.parseColor("#3300FF00"))
+            }
+            index += 1
+        }
+
+        findViewById<TextView>(R.id.debugCurrentWord).text = currentWord
+
+        nextRow()
+    }
+
+    fun nextRow(){
         currentRow += 1
-        greyOutEverything()     //firsst grey out everything
+        greyOutEverything()     //first grey out everything
         rowInputController()    //then call function to enable appropriate row
 
         findViewById<TextView>(R.id.textView).text = currentRow.toString()
+
     }
 
     fun greyOutEverything(){
@@ -177,21 +207,27 @@ class MainActivity : AppCompatActivity() {
         for (element in list1){
             element.editText?.setInputType(InputType.TYPE_NULL)
             //element.setBackgroundColor(Color.parseColor("#000000"))
+            element.isEnabled = false
         }
         for (element in list2){
             element.editText?.setInputType(InputType.TYPE_NULL)
+            element.isEnabled = false
         }
         for (element in list3){
             element.editText?.setInputType(InputType.TYPE_NULL)
+            element.isEnabled = false
         }
         for (element in list4){
             element.editText?.setInputType(InputType.TYPE_NULL)
+            element.isEnabled = false
         }
         for (element in list5){
             element.editText?.setInputType(InputType.TYPE_NULL)
+            element.isEnabled = false
         }
         for (element in list6){
             element.editText?.setInputType(InputType.TYPE_NULL)
+            element.isEnabled = false
         }
     }
 
@@ -199,31 +235,37 @@ class MainActivity : AppCompatActivity() {
         if (currentRow == 1){
             for (element in list1){
                 element.editText?.setInputType(InputType.TYPE_CLASS_TEXT)
+                element.isEnabled = true
             }
         }
         if (currentRow == 2){
             for (element in list2){
                 element.editText?.setInputType(InputType.TYPE_CLASS_TEXT)
+                element.isEnabled = true
             }
         }
         if (currentRow == 3){
             for (element in list3){
                 element.editText?.setInputType(InputType.TYPE_CLASS_TEXT)
+                element.isEnabled = true
             }
         }
         if (currentRow == 4){
             for (element in list4){
                 element.editText?.setInputType(InputType.TYPE_CLASS_TEXT)
+                element.isEnabled = true
             }
         }
         if (currentRow == 5){
             for (element in list5){
                 element.editText?.setInputType(InputType.TYPE_CLASS_TEXT)
+                element.isEnabled = true
             }
         }
         if (currentRow == 6){
             for (element in list6){
                 element.editText?.setInputType(InputType.TYPE_CLASS_TEXT)
+                element.isEnabled = true
             }
         }
 
