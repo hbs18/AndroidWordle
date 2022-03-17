@@ -1,10 +1,10 @@
 # AndroidWordle
 A Wordle-like game for Android, written in Kotlin.
 
-#Screenshots
+# Screenshots
 <img src="https://i.imgur.com/T19gzuF.png" alt="" width="250"/>
 
-#To do
+# To do
 
 In order of importance
 
