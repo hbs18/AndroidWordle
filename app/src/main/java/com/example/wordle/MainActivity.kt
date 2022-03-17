@@ -7,6 +7,7 @@ import android.text.InputType
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.textfield.TextInputLayout
@@ -22,12 +23,14 @@ lateinit var list4: List<TextInputLayout>
 lateinit var list5: List<TextInputLayout>
 lateinit var list6: List<TextInputLayout>
 
-var wotd = "kurac"
+lateinit var wotd: String       //word of the day
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        pickRandomWord()
 
         list1 = listOf(letterBox01, letterBox02, letterBox03, letterBox04, letterBox05)
         list2 = listOf(letterBox06, letterBox07, letterBox08, letterBox09, letterBox10)
@@ -188,7 +191,7 @@ class MainActivity : AppCompatActivity() {
             index += 1
         }
 
-        findViewById<TextView>(R.id.debugCurrentWord).text = currentWord
+        //findViewById<TextView>(R.id.debugCurrentWord).text = currentWord
 
         nextRow()
     }
@@ -198,7 +201,11 @@ class MainActivity : AppCompatActivity() {
         greyOutEverything()     //first grey out everything
         rowInputController()    //then call function to enable appropriate row
 
-        findViewById<TextView>(R.id.textView).text = currentRow.toString()
+        //findViewById<TextView>(R.id.textView).text = currentRow.toString()
+
+        if (currentRow == 7){
+            Toast.makeText(applicationContext, "Game over", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -269,6 +276,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    fun pickRandomWord(){
+        val words = listOf("cigar","rebut","sissy","humph","awake","blush","focal","evade","naval","serve","heath","dwarf","model","karma","stink","grade","quiet","bench","abate","feign","major","death","fresh","crust","stool","colon","abase","marry","react","batty","pride","floss","helix","croak","staff","paper","unfed","whelp","trawl","outdo","adobe","crazy","sower","repay","digit","crate","cluck","spike","mimic","pound","maxim","linen","unmet","flesh","booby","forth","first","stand","belly","ivory","seedy","print","yearn","drain","bribe","stout","panel","crass","flume","offal","agree","error","swirl","argue","bleed","delta","flick","totem","wooer","front","shrub","parry","biome","lapel","start","greet","goner","golem","lusty","loopy","round","audit","lying","gamma","labor","islet","civic","forge","corny","moult","basic","salad","agate","spicy","spray","essay","fjord","spend","kebab","guild","aback","motor","alone","hatch","hyper","thumb","dowry","ought","belch","dutch","pilot","tweed","comet","jaunt","enema","steed","abyss","growl","fling","dozen","boozy","erode","world","gouge","click","briar","great","altar","pulpy","blurt","coast","duchy","groin","fixer","group","rogue","badly","smart","pithy","gaudy","chill","heron","vodka","finer","surer","radio","rouge","perch","retch","wrote","clock","tilde","store","prove","bring","solve","cheat","grime","exult","usher","epoch","triad","break","rhino","viral","conic","masse","sonic","vital","trace","using","peach","champ","baton","brake","pluck","craze","gripe","weary","picky","acute","ferry","aside","tapir","troll","unify","rebus","boost","truss","siege","tiger","banal","slump","crank","gorge","query","drink","favor","abbey","tangy","panic","solar","shire","proxy","point","robot","prick","wince","crimp","knoll","sugar")
+        wotd = words.random()
     }
 
 
