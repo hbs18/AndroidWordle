@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.textfield.TextInputLayout
@@ -205,6 +206,9 @@ class MainActivity : AppCompatActivity() {
 
         if (currentRow == 7){
             Toast.makeText(applicationContext, "Game over", Toast.LENGTH_SHORT).show()
+            gameOverText.text = "The word was: "+wotd.toString()
+            gameOverText.isVisible = true
+
         }
 
     }
@@ -275,7 +279,6 @@ class MainActivity : AppCompatActivity() {
                 element.isEnabled = true
             }
         }
-
     }
 
     fun pickRandomWord(){

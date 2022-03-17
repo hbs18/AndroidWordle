@@ -538,4 +538,14 @@
         android:onClick="Test"
         android:text="Check" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GameOverText"
+        android:id="@+id/gameOverText"
+        android:visibility="gone">
+
+
+    </TextView>
+
 </LinearLayout>
